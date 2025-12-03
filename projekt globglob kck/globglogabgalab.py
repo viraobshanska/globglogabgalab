@@ -62,7 +62,9 @@ def pokaz_bodziec(kategoria, plik, czas_wyswietlania=1.5, fps=15):
 
         screen.fill((0, 0, 0))
         frame = frames[frame_id % len(frames)]
-        screen.blit(frame, (0, 0))
+        frame = pygame.transform.smoothscale(frame, screen.get_size())
+        rect = frame.get_rect(center=(400, 300))
+        screen.blit(frame, rect)
         pygame.display.flip()
 
         frame_id += 1
@@ -74,4 +76,5 @@ for kategoria, plik in bodzce:
     time.sleep(1)  
 
 pygame.quit()
+
 
